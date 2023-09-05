@@ -1,4 +1,5 @@
-# Freelancer Marketplace Project
+# HireHero - Find and Rate Your Talent
+Freelancer Marketplace Project
 
 ## Overview
 
