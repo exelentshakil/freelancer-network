@@ -39,9 +39,12 @@ Route::middleware('auth')->group(function () {
 
     // Jobs Routes
     Route::resource('jobs', JobController::class);
+    //Route::get('/jobs/{permalink}', [JobController::class, 'showByPermalink'])->name('jobs.showByPermalink');
 
     // Bids Routes
     Route::resource('bids', BidController::class);
+    Route::post('/bids/{bid}/accept', [BidController::class, 'accept'])->name('bids.accept');
+    Route::post('/bids/{bid}/reject', [BidController::class, 'reject'])->name('bids.reject');
 
     // Messages Routes
     Route::resource('messages', MessageController::class);
