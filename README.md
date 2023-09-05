@@ -9,38 +9,38 @@ The Freelancer Marketplace is a web application designed to connect clients with
 
 ### User Management
 
-- User registration and authentication (clients and freelancers).
-- User profiles with roles (Client or Freelancer).
-- User profile details, including contact information and profile picture.
+- [x] User registration and authentication (clients and freelancers).
+- [x] User profiles with roles (Client or Freelancer).
+- [x] User profile details, including contact information and profile picture.
 
 ### Job Listings
 
-- Clients can post job listings with project details.
-- Job titles, descriptions, budgets, and deadlines.
-- Job statuses (Open, In Progress, Completed).
+- [x] Clients can post job listings with project details.
+- [x] Job titles, descriptions, budgets, and deadlines.
+- [x] Job statuses (Open, In Progress, Completed).
 
 ### Bidding System
 
-- Freelancers can submit proposals and bids for jobs.
-- Bid amounts and proposals.
-- Bid statuses (Pending, Accepted, Rejected).
+- [x] Freelancers can submit proposals and bids for jobs.
+- [x] Bid amounts and proposals.
+- [x] Bid statuses (Pending, Accepted, Rejected).
 
 ### Messaging System
 
-- Communication between clients and freelancers.
-- Messaging related to specific jobs.
-- Real-time messaging functionality.
+- [ ] Communication between clients and freelancers.
+- [ ] Messaging related to specific jobs.
+- [ ] Real-time messaging functionality.
 
 ### Reviews and Ratings
 
-- Clients and freelancers can leave reviews and ratings for each other.
-- Review ratings and optional review text.
+- [ ] Clients and freelancers can leave reviews and ratings for each other.
+- [ ] Review ratings and optional review text.
 
 ### Payments
 
-- Secure payment processing for job payments.
-- Escrow services for fund holding.
-- Payment statuses (Pending, Completed).
+- [ ] Secure payment processing for job payments.
+- [ ] Escrow services for fund holding.
+- [ ] Payment statuses (Pending, Completed).
 
 ## Technologies Used
 
