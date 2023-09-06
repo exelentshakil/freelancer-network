@@ -67,10 +67,14 @@
                             <ul>
                                 @foreach($job->bids as $bid)
                                     <li class="mb-2 mt-3 shadow-md px-3 py-3">
-                                        <strong class="text-gray-800">Bid Amount:</strong> {{ $bid->bid_amount }}
+                                        @if(auth()->user()->id !== $bid->user->id && auth()->user()->role === 'Client') <!-- Ensure you don't show the button to the user viewing their own profile -->
+                                        <a href="{{ route('user', $bid->user->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">Start Chat Conversation</a>
+                                        @endif
+                                        <div class="clear mt-3"></div>
+                                        <strong class="text-gray-800">Bid Amount: {{ $bid->bid_amount }}</strong>
                                         <p class="text-gray-600">Proposal: {{ $bid->proposal }}</p>
                                         <p class="text-gray-600">By: {{ $bid->user->name }}</p>
-                                        @if ($bid->status === 'Pending')
+                                        @if ($bid->status === 'Pending' && auth()->user()->role === 'Client')
                                             <form action="{{ route('bids.accept', $bid) }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success">Accept</button>
@@ -79,13 +83,13 @@
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">Reject</button>
                                             </form>
-                                        @elseif ($bid->status === 'Accepted')
+                                        @elseif ($bid->status === 'Accepted' && auth()->user()->role === 'Client')
                                             <span class="text-success">Accepted</span>
                                             <form action="{{ route('bids.reject', $bid) }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">Reject</button>
                                             </form>
-                                        @elseif ($bid->status === 'Rejected')
+                                        @elseif ($bid->status === 'Rejected' && auth()->user()->role === 'Client')
                                             <span class="text-danger">Rejected</span>
                                             <form action="{{ route('bids.accept', $bid) }}" method="POST">
                                                 @csrf

@@ -14,7 +14,13 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::where('client_id', auth()->user()->id)->get();
+        if ( auth()->user()->role === 'Client') {
+            $jobs = Job::where('client_id', auth()->user()->id)->get()->sortBy('created_at', SORT_REGULAR, true);;
+
+        } else {
+            $jobs = Job::all()->sortBy('created_at', SORT_REGULAR, true);
+
+        }
         return view('jobs.index', compact('jobs'));
     }
 

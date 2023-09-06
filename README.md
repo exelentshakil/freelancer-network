@@ -26,10 +26,12 @@ The Freelancer Marketplace is a web application designed to connect clients with
 - [x] Bid statuses (Pending, Accepted, Rejected).
 
 ### Messaging System
+The Messaging System implemented using Laravel Chatify that allows users to communicate with each other through private messages. It provides real-time messaging, user privacy, and an intuitive user interface for seamless communication.
 
-- [ ] Communication between clients and freelancers.
-- [ ] Messaging related to specific jobs.
-- [ ] Real-time messaging functionality.
+- [x] Communication between clients and freelancers.
+- [x] Messaging related to specific jobs.
+- [x] Real-time messaging functionality.
+
 
 ### Reviews and Ratings
 
