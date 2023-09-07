@@ -89,3 +89,23 @@ function checkIfAllDeliveryRejected($job_id) {
     return false;
 
 }
+
+function checkIfOneDeliveryAccepted($job_id) {
+    $deliveries = JobDelivery::where('job_id', $job_id)->where('status', 'Accepted')->get();
+
+    if ( $deliveries->count() > 0 ) {
+        return true;
+    }
+
+    return false;
+}
+
+function checkIfDelivered($job_id) {
+    $deliveries = JobDelivery::where('job_id', $job_id)->get();
+
+    if ( $deliveries->count() > 0 ) {
+        return true;
+    }
+
+    return false;
+}

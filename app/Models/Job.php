@@ -55,6 +55,11 @@ class Job extends Model
         return $this->hasMany(JobDelivery::class)->latest('created_at');
     }
 
+    public function review()
+    {
+        return $this->hasOne(Review::class);
+    }
+
 
 
 }

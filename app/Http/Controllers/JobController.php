@@ -74,7 +74,7 @@ class JobController extends Controller
      */
     public function show(string $permalink)
     {
-        $job = Job::with('user')->where('permalink', $permalink)->firstOrFail();
+        $job = Job::with('user', 'review')->where('permalink', $permalink)->firstOrFail();
 
         //$job = Job::with('user')->findOrFail($id);
         return view('jobs.show', compact('job'));

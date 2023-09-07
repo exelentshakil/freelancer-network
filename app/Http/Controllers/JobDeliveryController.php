@@ -29,7 +29,7 @@ class JobDeliveryController extends Controller
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $filePath = $file->store('job_deliveries'); // Store the file in a storage location
+            $filePath = $file->store('public/job_deliveries'); // Store the file in a storage location
 
             $delivery->file_path = $filePath;
         }
@@ -48,6 +48,10 @@ class JobDeliveryController extends Controller
             'accepted_at' => now()
         ]);
 
+        $jobDelivery->job->update([
+            'status' => 'Completed',
+        ]);
+
         return redirect()->back()
             ->with('message', 'Yayy! Job delivery accepted.');
     }
@@ -59,6 +63,11 @@ class JobDeliveryController extends Controller
             'status' => 'Rejected',
             'rejected_at' => now()
         ]);
+
+        $jobDelivery->job->update([
+            'status' => 'In Progress',
+        ]);
+
 
         return redirect()->back()
             ->with('message', 'Unable to accept delivery.');

@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
 
     // Reviews Routes
     Route::resource('reviews', ReviewController::class);
+    Route::post('reviews/{review}/reply', [ReviewController::class, 'replyReview'])->name('review.reply');
 
     // Payments Routes
     Route::resource('payments', PaymentController::class);
