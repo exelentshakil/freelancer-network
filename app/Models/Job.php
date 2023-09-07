@@ -49,4 +49,12 @@ class Job extends Model
     public function bids() {
         return $this->hasMany(Bid::class);
     }
+
+    public function deliveries()
+    {
+        return $this->hasMany(JobDelivery::class)->latest('created_at');
+    }
+
+
+
 }

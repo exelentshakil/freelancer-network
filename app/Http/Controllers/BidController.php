@@ -93,6 +93,10 @@ class BidController extends Controller
             'accepted_at' => now(),
         ]);
 
+        $bid->job->update([
+            'status' => 'In Progress'
+        ]);
+
         // Add any additional logic (e.g., sending notifications) here
 
         return back()->with('success', 'Bid accepted successfully.');
@@ -104,6 +108,9 @@ class BidController extends Controller
             'status' => 'rejected',
         ]);
 
+        $bid->job->update([
+            'status' => 'Open'
+        ]);
         // Add any additional logic (e.g., sending notifications) here
 
         return back()->with('success', 'Bid rejected successfully.');

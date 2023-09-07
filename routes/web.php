@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BidController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\JobDeliveryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -39,6 +40,13 @@ Route::middleware('auth')->group(function () {
 
     // Jobs Routes
     Route::resource('jobs', JobController::class);
+
+    // Define routes for job deliveries
+    Route::get('jobs/{job}/deliver', [JobDeliveryController::class, 'create'])->name('job-deliver.create');
+    Route::post('jobs/{job}/deliver', [JobDeliveryController::class, 'store'])->name('job-deliver.store');
+    Route::post('/job_deliveries/{job_delivery}/accept-delivery', [JobDeliveryController::class, 'acceptDelivery'])->name('delivery.accept-delivery');
+    Route::post('/job_deliveries/{job_delivery}/reject-delivery', [JobDeliveryController::class, 'rejectDelivery'])->name('delivery.reject-delivery');
+
     //Route::get('/jobs/{permalink}', [JobController::class, 'showByPermalink'])->name('jobs.showByPermalink');
 
     // Bids Routes

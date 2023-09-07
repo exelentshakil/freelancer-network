@@ -15,7 +15,7 @@
                     {{ __("You're logged in!") }}
 
                     @foreach($jobs as $job)
-                        <div class="bg-white shadow-md rounded-lg p-6 mt-3 ">
+                        <div class="bg-black shadow-md rounded-lg p-6 mt-3 ">
                             <h1 class="text-3xl font-semibold mb-4">{{ $job->title }}</h1>
                             <p class="text-gray-600 mb-4">Posted by: {{ $job->user->name }}</p>
                             <p class="text-gray-600 mb-4">Posted on: {{$job->created_at->diffForHumans() }}</p>
@@ -26,12 +26,15 @@
                                 {{ \Illuminate\Support\Str::substr($job->description, 0, 150) }}...
                             </p>
                             <div class="flex gap-2">
-                            @if( auth()->user()->role == 'Client' || auth()->user()->role == 'Admin')
+                                @if( auth()->user()->role == 'Client' || auth()->user()->role == 'Admin')
                                 <a href="{{ route('jobs.show', $job->permalink) }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">{{$job->status}}</a>
                                 @elseif( auth()->user()->role == 'Freelancer' && existingBid($job->id))
                                     <a href="{{ route('jobs.show', $job->permalink) }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">Applied</a>
-                                @elseif( auth()->user()->role == 'Freelancer')
+                                @elseif( auth()->user()->role == 'Freelancer' && !checkAcceptedBids($job->id))
                                     <a href="{{ route('jobs.show', $job->permalink) }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">Apply Now</a>
+
+                                @elseif( auth()->user()->role == 'Freelancer')
+                                    <a href="{{ route('jobs.show', $job->permalink) }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">Awarded</a>
                                 @endif
 
                                 <form method="POST" action="{{ route('jobs.destroy', ['job' => $job->id]) }}">

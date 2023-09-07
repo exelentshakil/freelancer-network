@@ -81,4 +81,8 @@ class User extends Authenticatable
         return $this->hasMany(Job::class);
     }
 
+    public function bid() {
+        return $this->hasOne(Bid::class,  'freelancer_id', 'id');
+    }
+
 }
