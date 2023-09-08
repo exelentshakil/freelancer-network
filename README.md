@@ -31,14 +31,15 @@ The Messaging System implemented using Laravel Chatify that allows users to comm
 - [x] Communication between clients and freelancers.
 - [x] Messaging related to specific jobs.
 - [x] Real-time messaging functionality.
+- [x] Real-time New Job Alert using Laravel Broadcasting, Echo for web socket connection & Pusher driver.
 
 
 ### Reviews and Ratings
 
-- [ ] Clients and freelancers can leave reviews and ratings for each other.
-- [ ] Review ratings and optional review text.
+- [x] Clients and freelancers can leave reviews and ratings for each other.
+- [x] Review ratings and optional review text.
 
-### Payments
+### Payments - No Plan yet
 
 - [ ] Secure payment processing for job payments.
 - [ ] Escrow services for fund holding.

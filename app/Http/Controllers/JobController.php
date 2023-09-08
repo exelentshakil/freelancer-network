@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewJobCreated;
 use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -56,7 +57,7 @@ class JobController extends Controller
         }
 
         // Create the job
-        Job::create([
+        $job = Job::create([
             'title' => $data['title'],
             'description' => $data['description'],
             'budget' => $data['budget'],
@@ -64,6 +65,9 @@ class JobController extends Controller
             'client_id' => auth()->user()->id, // Assuming jobs are associated with users
             'permalink' => $permalink
         ]);
+
+        // Dispatch the event
+        event(new NewJobCreated($job));
 
         // Redirect to the jobs listing or job details page
         return redirect()->route('jobs.index'); // Replace 'jobs.index' with the appropriate route

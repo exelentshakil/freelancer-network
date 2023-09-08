@@ -33,5 +33,14 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- Scripts -->
+        <script>
+            window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+            'user' => auth()->user()->toArray(),
+        ]) !!};
+
+        </script>
     </body>
 </html>
